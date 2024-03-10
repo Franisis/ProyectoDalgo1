@@ -1,5 +1,8 @@
-def reorganizar_torres(torres):
-    n = len(torres)
+import sys
+import time
+
+def reorganizar_torres(n,torres):
+    
     cambios = True
     movimientos = 0
     while cambios:
@@ -13,7 +16,21 @@ def reorganizar_torres(torres):
     return movimientos
 
 
-lista="36 38 14 7 7 7 2 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0".split(" ")
-lista = [int(i) for i in lista]
-print(reorganizar_torres(lista))
-print(lista)
+def main():
+    if len(sys.argv)<2:
+        print("ERROR: Número incorrecto de paramétros para ejecutar el programa")
+        pass
+    entrada= sys.argv[1]
+    with open(entrada, 'r') as archive:
+        chmbadas=archive.readline()
+        chmbadas=int(chmbadas)
+        for linea in archive:
+            linea=linea.replace('\n','').split(" ")
+            chmbaditas=int(linea[0])
+            del linea[0]
+            linea=[int(i) for i in linea]
+            print(reorganizar_torres(chmbaditas, linea))
+            print(linea)
+            
+
+main()
