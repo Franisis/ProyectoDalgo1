@@ -1,6 +1,11 @@
 import sys
 import time
 
+"""
+FRANCISCO JOSÉ GUZMÁN ÁNGEL
+202012332
+"""
+
 def reorganizar_torres(n,torres):    
     cambios = True
     movimientos = 0
@@ -12,8 +17,6 @@ def reorganizar_torres(n,torres):
                 torres[i + 1] -= 1
                 cambios = True
                 movimientos += 1
-    
-    1
     return movimientos
 
 
@@ -26,15 +29,16 @@ def main():
     with open(entrada, 'r') as archive:
         with open(salida,'w') as output:
 
-            chmbadas=archive.readline()
-            chmbadas=int(chmbadas)
+            m=archive.readline()
+            m=int(m)
             for linea in archive:
                 linea=linea.replace('\n','').split(" ")
-                chmbaditas=int(linea[0])
+                n=int(linea[0])
                 del linea[0]
                 linea=[int(i) for i in linea]
-                output.write(str(reorganizar_torres(chmbaditas, linea))+"\n")
+                start=time.time()
+                output.write(str(reorganizar_torres(n, linea))+"\n")
+                end=time.time()
                 print(linea)
-            
-
+                print(end-start)
 main()
